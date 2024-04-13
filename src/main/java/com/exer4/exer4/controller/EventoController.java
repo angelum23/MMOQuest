@@ -1,18 +1,20 @@
 package com.exer4.exer4.controller;
 
 import com.exer4.exer4.domain.Evento;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import java.net.http.HttpResponse;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class EventoController{
-    public RequestBody Inserir(Evento evento) {
-        try {
 
+    @PostMapping("/evento/inserir")
+    public ResponseEntity<Object> Inserir(Evento evento) {
+        try {
+            return ResponseEntity.status(200).body("Evento inserido com sucesso!");
         } catch(Exception e) {
-            return HttpResponse.status(500);
+            return ResponseEntity.status(500).body("");
         }
     }
 }
