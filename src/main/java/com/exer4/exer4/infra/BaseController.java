@@ -7,44 +7,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public abstract class BaseController<T> {
+public abstract class BaseController<T extends IEntidadeBase> {
 
     @Autowired
     private BaseService<T> service;
-
-    @GetMapping
-    public ResponseEntity<List<T>> recuperar() {
-        try {
-            return service.recuperar();
-        }
-        catch (Exception e) {
-            return ResponseEntity.status(500);
-        }
-    }
 
     @PostMapping
     public ResponseEntity<Object> salvar(@RequestBody T entidade) {
         try {
             service.salvar(entidade);
-            return ResponseEntity.status(200).body("Registro inserido com sucesso!");
+            return ResponseEntity.status(200).body("Registro salvo com sucesso!");
         } catch(Exception e) {
-            return ResponseEntity.status(500).body("Erro ao inserir registro! " + e.getMessage());
-        }
-    }
-
-    @PutMapping
-    public ResponseEntity<Object> alterar(@RequestBody T entidade) {
-        try {
-            service.alterar(entidade);
-            return ResponseEntity.status(200).body("Registro alterado com sucesso!");
-        }
-        catch(Exception e) {
-            return ResponseEntity.status(500).body("Erro ao alterar registro!" + e.getMessage());
+            return ResponseEntity.status(500).body("Erro ao salvar registro! " + e.getMessage());
         }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> remover(@PathVariable Long id) {
+    public ResponseEntity<Object> remover(@PathVariable Integer id) {
         try {
             service.remover(id);
             return ResponseEntity.status(200).body("Registro removido com sucesso!");

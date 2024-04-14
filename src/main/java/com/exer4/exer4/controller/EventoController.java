@@ -9,5 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-public class EventoController extends BaseController<Evento> {}
+public class EventoController extends BaseController<Evento> {
+    @Autowired
+    private EventoService service;
+}

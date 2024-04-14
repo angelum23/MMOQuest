@@ -6,3 +6,4 @@ public enum StatusTarefa {
     Sucesso,
     Falha,
 }
+

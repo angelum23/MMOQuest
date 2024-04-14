@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Tarefa extends Evento {
-    Boolean NaoPossuiData = false;
+    Boolean NaoPossuiData = true;
     StatusTarefa status;
 }
