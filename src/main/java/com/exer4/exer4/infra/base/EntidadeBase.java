@@ -1,4 +1,4 @@
-package com.exer4.exer4.infra;
+package com.exer4.exer4.infra.base;
 
 import org.springframework.stereotype.Component;
 
